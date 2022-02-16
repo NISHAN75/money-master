@@ -1,5 +1,3 @@
- /*====calculate-btn event handling ====*/
-
   /*====total income handling====*/
  function getIncomeTotal(){
     const totalIncomeText=document.getElementById('total-income').value;
@@ -22,14 +20,19 @@
     totalExpensesId.innerText=totalExpenses;
     return totalExpenses;
  };
+ /* ==== balance calculation  ====*/
+function getBlance(inTotalIncome,inTotalExpenses){
+    const balance=inTotalIncome-inTotalExpenses;
+    const balanceId=document.getElementById('balance');
+    const balanceText=balanceId.innerText;
+        balanceId.innerText =balance; 
+}
+  /*====calculate-btn event handling ====*/
 document.getElementById('calculate-btn').addEventListener('click',function(){
     /* total income */
     const inTotalIncome=getIncomeTotal()
     /*====total expenses handling====*/
   const inTotalExpenses= getExpensesTotal('food','rent','clothes');
-    /*==== total remaining blance ====*/
-    const remainingBalance=inTotalIncome-inTotalExpenses;
-    const remainingBalanceId=document.getElementById('remaining-balance');
-    const remainingBalanceText=remainingBalanceId.innerText;
-    remainingBalanceId.innerText =remainingBalance; 
+    /*==== total  blance ====*/
+   getBlance(inTotalIncome,inTotalExpenses);
 });
