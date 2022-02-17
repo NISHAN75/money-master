@@ -92,7 +92,6 @@ document.getElementById('calculate-btn').addEventListener('click',function(){
   
    getIncomeTotal();
   //getTotalCost fuction call  
-   debugger;
    getTotalCost();
   //getTotalBlance fuction call  
  
