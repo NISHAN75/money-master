@@ -5,34 +5,80 @@
     return totalIncome;
  };
 /*==== total expenses handling ====*/
- function getExpensesTotal(num1,num2,num3){
+ function getExpensesInput(expenses){
     //  find expenses
-    const foodExpensesText=document.getElementById(num1 +'-expenses').value;
-    const foodExpenses=parseFloat(foodExpensesText);
-    const rentExpensesText=document.getElementById(num2 +'-expenses').value;
-    const rentExpenses=parseFloat(rentExpensesText);
-    const clothesExpensesText=document.getElementById(num3 +'-expenses').value;
-    const clothesExpenses=parseFloat(clothesExpensesText);
-      // total expenses calculation
-    const totalExpenses=foodExpenses + rentExpenses + clothesExpenses;
-    const totalExpensesId=document.getElementById('total-expenses');
-    const totalExpensesText=totalExpensesId.innerText;
-    totalExpensesId.innerText=totalExpenses;
-    return totalExpenses;
+    const expensesText=document.getElementById(expenses +'-expenses').value;
+    const expensesNumber=parseFloat(expensesText);
+    return expensesNumber;
+    
  };
+   /*==== total expenses calculation ====*/
+ function getTotalCost(){
+   const foodExpense=getExpensesInput('food');
+   const rentExpense=getExpensesInput('rent');
+   const clothesExpense=getExpensesInput('clothes');
+   const totalCostId=document.getElementById('total-cost');
+   const totalCostText=totalCostId.innerText;
+   const totalExpenses=foodExpense + rentExpense + clothesExpense;
+   totalCostId.innerText=totalExpenses;
+   return totalExpenses;
+
+ }
  /* ==== balance calculation  ====*/
-function getBlance(inTotalIncome,inTotalExpenses){
-    const balance=inTotalIncome-inTotalExpenses;
-    const balanceId=document.getElementById('balance');
-    const balanceText=balanceId.innerText;
-        balanceId.innerText =balance; 
+function getTotalBlance(){
+  const totalBalanceId=document.getElementById('balance');
+    const totalBalanceText=totalBalanceId.innerText;
+    const inTotalIncome =getIncomeTotal();
+    const inTotalCost=getTotalCost()
+    const totalBalance=inTotalIncome -inTotalCost;
+    totalBalanceId.innerText=totalBalance;
+     return totalBalance;
+};
+/*==== get  save persent ====*/
+function getSavePersent(){
+  const savePersentInput=document.getElementById('save-percent').value;
+  const savePersent=parseFloat(savePersentInput);
+  return savePersent;
 }
+/*==== get save amount  ====*/
+function getSaveAmount(){
+ const saveAmountId=document.getElementById('save-amount');
+ const saveAmountText=saveAmountId.innerText;
+ const savePersent=getSavePersent();
+ const inTotalIncome =getIncomeTotal();
+ const saveAmount=(inTotalIncome * savePersent) / 100;
+ saveAmountId.innerText=saveAmount;
+ return saveAmount;
+}
+/* ==== get remaining blance ====*/
+function getRemainingBlance(){
+  const remainingBlanceId=document.getElementById('remaining-balance');
+  const remainingBlanceText=remainingBlanceId.innerText;
+  const totalBalance =getTotalBlance();
+  const saveAmount =getSaveAmount();
+  const remainingBlance= totalBalance -saveAmount;
+  remainingBlanceId.innerText=remainingBlance;
+  return remainingBlance;
+}
+/*==== save amount ====*/
+
   /*====calculate-btn event handling ====*/
 document.getElementById('calculate-btn').addEventListener('click',function(){
-    /* total income */
-    const inTotalIncome=getIncomeTotal()
-    /*====total expenses handling====*/
-  const inTotalExpenses= getExpensesTotal('food','rent','clothes');
-    /*==== total  blance ====*/
-   getBlance(inTotalIncome,inTotalExpenses);
+  // getIncomeTotal fuction call  
+   getIncomeTotal();
+  //getTotalCost fuction call  
+   getTotalCost();
+  //getTotalBlance fuction call  
+    getTotalBlance();
 });
+/* ==== save-btn event handling ====*/
+document.getElementById('save-btn').addEventListener('click',function(){
+  /*==== remaining Blance event handling  ====*/
+// getSavePersent function call
+ getSavePersent();
+// getSaveAmount function call
+ getSaveAmount();
+//getRemainingBlance fuction call  
+ getRemainingBlance();
+
+})
