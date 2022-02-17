@@ -107,5 +107,4 @@ document.getElementById('save-btn').addEventListener('click',function(){
  getSaveAmount();
 //getRemainingBlance fuction call  
  getRemainingBlance();
-
 })
