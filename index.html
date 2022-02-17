@@ -26,7 +26,7 @@
                     </div>
                 </div>
             </div>
-        </section>c
+        </section>
     </header>
     <main>
         <section class="Calculate-section mb-5">
@@ -43,13 +43,22 @@
                                 <div class="count-area  text-center mt-3">
                                     <div class="income-area mb-30" >
                                         <h2 class="sub-title mb-40" >Income</h2>
-                                        <span class="input-name">Income:</span> <input class="input-flied" id="total-income" type="number">
+                                        <span class="input-name">Income:</span> <input class="input-flied" value="0" id="total-income" type="number" required><br>
+                                        <span class="alert-caption text-danger ml-100" id="income-alert"></span>
                                     </div>
                                     <div class="expenses-area mb-40">
                                         <h2 class="sub-title mb-40">Expenses</h2>
-                                        <div class="input-expenses mb-30"><span class="input-name">Food:</span><input class="input-flied" id="food-expenses" type="number"></div>
-                                        <div class="input-expenses mb-30"><span class="input-name">Rent:</span><input class="input-flied" id="rent-expenses" type="number"></div>
-                                        <div class="input-expenses mb-30"><span class="input-name">Clothes:</span><input class="input-flied" id="clothes-expenses" type="number"></div>
+                                        <div class="input-expenses mb-30"><span class="input-name">Food:</span><input class="input-flied" id="food-expenses" type="number"><br>
+                                            <span class="alert-caption text-danger ml-100" id="food-alert"></span>
+                                        </div>
+                                        <div class="input-expenses mb-30"><span class="input-name">Rent:</span><input class="input-flied" id="rent-expenses" type="number">
+                                            <br>
+                                        <span class="alert-caption text-danger ml-100" id="rent-alert"></span>
+                                        </div>
+                                        <div class="input-expenses mb-30"><span class="input-name">Clothes:</span><input class="input-flied" id="clothes-expenses" type="number">
+                                            <br>
+                                        <span class="alert-caption text-danger ml-100" id="clothes-alert"></span>
+                                        </div>
                                     </div>
                                     <button class="btn-style mb-20" type="button" id="calculate-btn">Calculate</button>
                                     <div class="total-expenses-area mt-4">
@@ -61,9 +70,12 @@
                                     <div class="saving-area mt-4 ">
                                         <div class="saving-count mb-4">
                                             <span class="input-name">Save:</span><input class="input-save-flied" id="save-percent" type="number"><span class="persent-icon">%</span><button class="btn-style" type="button" id="save-btn">Save</button>
+                                            <br>
+                                            <span class="alert-caption text-danger ml-100" id="persent-alert"></span>
                                         </div>
                                         <div class="saving-output  mt-3">
-                                            <h3 class="sub-title ">Saving Amount:<span id="save-amount">000</span></h3>
+                                            <h3 class="sub-title ">Saving Amount:<span id="save-amount">000</span><br>
+                                            </h3>
                                         </div>
                                         <div class="remaining-area mt-4">
                                             <h3 class="sub-title mb-40">Remaining Balance:<span id="remaining-balance">000</span></h3>
